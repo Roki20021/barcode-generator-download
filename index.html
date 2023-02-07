@@ -2,7 +2,10 @@
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.5/dist/html2canvas.min.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  for (let i = 10000310; i <= 10000399; i++) {
+  let start = prompt('Podaj początkowy zakres:');
+  let end = prompt('Podaj końcowy zakres:');
+
+  for (let i = start; i <= end; i++) {
     const canvas = document.createElement('canvas');
     canvas.id = `barcode-${i}`;
     document.body.appendChild(canvas);
