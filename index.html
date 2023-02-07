@@ -1,0 +1,24 @@
+<script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.5/dist/html2canvas.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  for (let i = 10000310; i <= 10000399; i++) {
+    const canvas = document.createElement('canvas');
+    canvas.id = `barcode-${i}`;
+    document.body.appendChild(canvas);
+
+    JsBarcode(`#barcode-${i}`, i.toString(), {
+        format: "code128",
+        width: 2,
+        height: 100
+    });
+
+    html2canvas(document.querySelector(`#barcode-${i}`)).then(canvas => {
+      const link = document.createElement("a");
+      link.download = `barcode-${i}.png`;
+      link.href = canvas.toDataURL();
+      link.click();
+    });
+  }
+});
+</script>
